@@ -1,4 +1,4 @@
-name: Rdp
+name: Kekuatan Wibu
 
 on: workflow_dispatch
 
@@ -9,24 +9,24 @@ jobs:
     timeout-minutes: 9999
 
     steps:
-    - name: Download Ngrok
+    - name: Download Wibu 
       run: |
         Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
         Invoke-WebRequest https://raw.githubusercontent.com/Its-JoeBoy/SRDP/main/start.bat -OutFile start.bat
-    - name: Unzip Ngrok File.
+    - name: Extract Cintaku Padamu.
       run: Expand-Archive ngrok.zip
-    - name: Connect 
+    - name: Gak Nyambung 
       run: .\ngrok\ngrok.exe authtoken $Env:NGROK_AUTH_TOKEN
       env:
         NGROK_AUTH_TOKEN: ${{ secrets.NGROK_AUTH_TOKEN }}
-    - name: Config RDP.
+    - name: Kek.
       run: | 
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server'-name "fDenyTSConnections" -Value 0
         Enable-NetFirewallRule -DisplayGroup "Remote Desktop"
         Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name "UserAuthentication" -Value 1
-    - name: Config Tunnel.
+    - name: Wibu Bau.
       run: Start-Process Powershell -ArgumentList '-Noexit -Command ".\ngrok\ngrok.exe tcp --region ap 3389"'
-    - name: Here is yout CPU 2 Core - 7GB Ram - 256 SSD Rdp 
-      run: ./start.bat
-    - name: Sleep for 6 Hours
+    - name: Spek? CPU 2 Core - 7GB Ram - 256 SSD Rdp 
+      run: ./se.bat
+    - name: 6 Jam Lagi Wibu Punah
       run: sleep 21600
